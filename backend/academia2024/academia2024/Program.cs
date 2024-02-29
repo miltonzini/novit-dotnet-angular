@@ -23,11 +23,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
-app.MapGet("/testHolaMundo", () => "Hello, world!");
-app.MapPost("/testHolaMundo", () => "Hello, world!");
-app.MapGet("/sumarUno/{numero}", (int numero) => (numero + 1).ToString());
-
 app.UseCors("Academia2024");
 
 app.MapCarter();
