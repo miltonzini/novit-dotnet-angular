@@ -7,7 +7,7 @@
         public int IdProducto { get; set; }
         public string Codigo { get; set; }
         public string Barrio { get; set; }
-        public decimal Precio { get; set; }
+        public int Precio { get; set; }
         public string Estado { get; set; }
         public string UrlImagen { get; set; }
 
