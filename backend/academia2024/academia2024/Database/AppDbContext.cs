@@ -3,7 +3,7 @@ using academia2024.Domain;
 
 namespace academia2024.Database
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Producto> Poductos { get; set; }
