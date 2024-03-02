@@ -8,10 +8,10 @@ namespace academia20204.Endpoints
         {
             var app = routes.MapGroup("/api/test");
 
-            app.MapGet("/HolaMundo", () => "Hello, world!").WithTags("Hola Mundo");
-            app.MapPost("/HolaMundo", () => "Hello, world!").WithTags("Hola Mundo");
-            app.MapGet("/sumarUno/{numero}", (int numero) => (numero + 1).ToString()).WithTags("Otros");
-            app.MapGet("/DescribirPersona/{nombre}/{edad}/{ciudad}", (string nombre, int edad, string ciudad) => $"{nombre} tiene {edad} años y vive en {ciudad}.").WithTags("Otros");
+            app.MapGet("/HolaMundo", () => "Hello, world!").WithTags("Endpoints de prueba iniciales");
+            app.MapPost("/HolaMundo", () => "Hello, world!").WithTags("Endpoints de prueba iniciales");
+            app.MapGet("/sumarUno/{numero}", (int numero) => (numero + 1).ToString()).WithTags("Endpoints de prueba iniciales");
+            app.MapGet("/DescribirPersona/{nombre}/{edad}/{ciudad}", (string nombre, int edad, string ciudad) => $"{nombre} tiene {edad} años y vive en {ciudad}.").WithTags("Endpoints de prueba iniciales");
 
         }
     }

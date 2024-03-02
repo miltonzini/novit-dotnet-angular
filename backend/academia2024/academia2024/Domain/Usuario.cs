@@ -13,10 +13,10 @@ namespace academia2024.Domain
         public string NombreUsuario { get; set; }
         
         [StringLength(100)]
-        public string password { get; set; }
+        public string Password { get; set; }
         
         [StringLength(100)]
-        public string rol { get; set; }
+        public string Rol { get; set; }
 
     }
 }

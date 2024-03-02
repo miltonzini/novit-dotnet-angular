@@ -13,9 +13,6 @@ namespace academia2024.Domain
         [Key]
         public int IdProducto { get; set; }
         
-        [StringLength(100)]
-        public string Codigo { get; set; }
-        
         [StringLength(200)]
         public string Barrio { get; set; }
         public string? Descripcion { get; set; }
