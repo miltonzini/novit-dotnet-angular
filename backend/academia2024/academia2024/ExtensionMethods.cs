@@ -7,7 +7,7 @@ namespace academia2024
     public static class ExtensionMethods   
     {
         public static ReservaDto ConvertToReservaDto(this Reserva r) =>
-            new(r.Id, r.Estado, r.UsuarioId, r.ProductoId);
+            new(r.IdReserva, r.Estado, r.UsuarioId, r.ProductoId);
 
         public static UsuarioDto ConvertToUsuarioDto(this Usuario u) =>
             new(u.IdUsuario, u.NombreUsuario, u.Password, u.Rol);

@@ -18,6 +18,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(config.GetConnectionString("AppDb")));
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
