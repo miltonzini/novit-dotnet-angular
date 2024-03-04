@@ -7,7 +7,7 @@ namespace academia2024.Domain
     public class Reserva
     {
         [Key]
-        public int Id { get; set; }
+        public int IdReserva { get; set; }
         public string Estado { get; set; }
         
         [ForeignKey("UsuarioId")]
