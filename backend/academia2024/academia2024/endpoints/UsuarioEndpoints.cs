@@ -25,7 +25,13 @@ namespace academia2024.endpoints
 
             // Traer usuarios con rol "comercial"
             // ...
-             
+
+            // Crear Usuario (post)
+            // -- usar api key 
+            // -- chequear que NombreUsuario no exista en la base de datos
+            // -- hashear contraseña
+
+
             // Validar usuario (post)
             // ...
 
