@@ -14,7 +14,7 @@ namespace academia2024.Database
             modelBuilder.Entity<Producto>().HasData(
                 new Producto
                 {
-                    IdProducto = -1,
+                    IdProducto = 1,
                     Barrio = "Palermo",
                     Descripcion = "Casa con patio.",
                     Precio = 50,
@@ -23,7 +23,7 @@ namespace academia2024.Database
                 },
                 new Producto
                 {
-                    IdProducto = -2,
+                    IdProducto = 2,
                     Barrio = "Almagro",
                     Descripcion = "Departamento 2 ambientes.",
                     Precio = 999,
@@ -32,7 +32,7 @@ namespace academia2024.Database
                 },
                 new Producto
                 {
-                    IdProducto = -3,
+                    IdProducto = 3,
                     Barrio = "Monserrat",
                     Descripcion = "Departamento 4 ambientes.",
                     Precio = 888,
@@ -43,30 +43,30 @@ namespace academia2024.Database
             modelBuilder.Entity<Usuario>().HasData(
                 new Usuario
                 {
-                    IdUsuario = -1,
+                    IdUsuario = 1,
                     NombreUsuario = "Juan",
                     Password = "abcde",
                     Rol = "comercial"
                 },
                 new Usuario
                 {
-                    IdUsuario = -2,
+                    IdUsuario = 2,
                     NombreUsuario = "Martín",
-                    Password = "abcde",
+                    Password = "hijkl",
                     Rol = "comercial"
                 }
             );
             modelBuilder.Entity<Reserva>().HasData(
                 new Reserva
                 {
-                    IdReserva = -1,
+                    IdReserva = 1,
                     Estado = "ingresada",
                     UsuarioId = 1,
                     ProductoId = 1
                 },
                 new Reserva
                 {
-                    IdReserva = -2,
+                    IdReserva = 2,
                     Estado = "ingresada",
                     UsuarioId = 2,
                     ProductoId = 2
