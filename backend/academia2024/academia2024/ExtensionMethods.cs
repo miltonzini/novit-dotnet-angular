@@ -10,7 +10,7 @@ namespace academia2024
             new(r.IdReserva, r.Estado, r.UsuarioId, r.Usuario.NombreUsuario, r.ProductoId, r.Producto.Descripcion);
 
         public static UsuarioDto ConvertToUsuarioDto(this Usuario u) =>
-            new(u.IdUsuario, u.NombreUsuario, u.Password, u.Rol);
+            new(u.IdUsuario, u.NombreUsuario, u.Password, u.Rol, u.Ventas);
 
         public static ProductoDto ConvertToProductoDto(this Producto p) =>
             new(p.IdProducto, p.Codigo, p.Barrio, p.Descripcion, p.Precio, p.Estado, p.UrlImagen);

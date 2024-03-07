@@ -17,6 +17,7 @@ namespace academia2024.Domain
         
         [StringLength(100)]
         public string Rol { get; set; }
+        public int Ventas { get; set; }
 
     }
 }

@@ -58,10 +58,11 @@ namespace academia2024.endpoints
             // Aprobar Reserva
             // -- If (estado == "aprobada" || estado == "cancelada" || estado == "rechazada")
             // ------ return BadRequest y mostrar mensaje "La reserva se encuentra cerrada y no puede modificarse su estado"
-            // -- chequear si el usuario logueado tiene rol comercial
+            // -- chequear si el usuario logueado y tiene rol comercial
             // -- chequear que el producto tenga estado "reservado"
             // -- r.estado = "aprobada"
             // -- r.producto.estado= "vendido"
+            // -- aumentar un número a Usuario.ventas
             // ...
 
 

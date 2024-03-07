@@ -6,5 +6,6 @@ namespace academia2024.endpoints.DTO
         int IdUsuario,
         string NombreUsuario,
         string Password,
-        string Rol);
+        string Rol,
+        int Ventas);
 }
