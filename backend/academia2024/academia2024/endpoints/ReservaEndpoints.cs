@@ -1,5 +1,6 @@
 ﻿using academia2024.Database;
 using Carter;
+using Microsoft.EntityFrameworkCore;
 namespace academia2024.endpoints
 {
     public class ReservaEndpoints : ICarterModule
@@ -11,7 +12,10 @@ namespace academia2024.endpoints
             // Traer todas las reservas
             app.MapGet("/listado", (AppDbContext context) =>
             {
-                var reservas = context.Reservas.Select(r => r.ConvertToReservaDto());
+                var reservas = context.Reservas
+                    .Include(r => r.Usuario)
+                    .Include(r => r.Producto)
+                    .Select(r => r.ConvertToReservaDto());
 
                 return Results.Ok(reservas);
 
@@ -42,6 +46,15 @@ namespace academia2024.endpoints
             // -- r.producto.estado= "reservado"
             // ...
 
+            // Cancelar Reserva
+            // -- chequear que el usuario sea vendedor
+            // -- chequear que la reserva se encuentre "ingresada"
+            // -- ¿chequear que el producto tenga estado "reservado"?
+            // -- r.estado = "cancelada"
+            // -- r.producto.estado= "disponible"
+            // ...
+
+
             // Aprobar Reserva
             // -- If (estado == "aprobada" || estado == "cancelada" || estado == "rechazada")
             // ------ return BadRequest y mostrar mensaje "La reserva se encuentra cerrada y no puede modificarse su estado"
@@ -51,11 +64,6 @@ namespace academia2024.endpoints
             // -- r.producto.estado= "vendido"
             // ...
 
-            // Cancelar Reserva
-            // -- chequear que el producto tenga estado "reservado"
-            // -- r.estado = "cancelada"
-            // -- r.producto.estado= "disponible"
-            // ...
 
             // Rechazar Reserva
             // -- chequear si el usuario logueado tiene rol comercial
