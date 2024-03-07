@@ -4,5 +4,8 @@
         int IdReserva, 
         string Estado, 
         int UsuarioId, 
-        int ProductoId);
+        string NombreUsuario,
+        int ProductoId,
+        string DescripcionProducto
+        );
 }
