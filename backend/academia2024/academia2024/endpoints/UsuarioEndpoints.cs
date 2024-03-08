@@ -17,7 +17,7 @@ namespace academia2024.endpoints
 
             }).WithTags("Usuario");
 
-            // Traer usuario por Id
+            // Traer usuario por Id 
             // ...
 
             // Traer usuarios con rol "vendedor"
