@@ -3,14 +3,37 @@ body {
     background-color: #202020;
     /* width: 100%;
     height: 100%; */
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+.mainNav {
+    background-color: purple;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+.mainNav .links {
+    display: inline;
+}
+.mainNav .links a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+main, nav, section {
+    color: #ddd;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+main {
+    background-color: #444;
+    width: 100%;
+    min-height: 80vh;
 }
 h1.title {
-    background-color: darkmagenta;
     width: fit-content;
     padding: 1em;
     font-size: 18px;
-}
-main {
-    color: #ddd;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    margin: 0 auto;
 }
