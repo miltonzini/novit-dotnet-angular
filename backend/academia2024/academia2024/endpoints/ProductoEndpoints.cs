@@ -1,5 +1,7 @@
 ﻿using academia2024.Database;
 using Carter;
+using academia2024.endpoints.DTO;
+using academia2024.Domain;
 namespace academia2024.endpoints
 {
     public class ProductoEndpoints : ICarterModule
@@ -48,16 +50,73 @@ namespace academia2024.endpoints
 
 
             // Crear nuevo producto
-            // -- chequear que el usuario sea vendedor
-            // ...
+            app.MapPost("/crear", (AppDbContext context, ProductoDto productoDto) =>
+            {
+                // Pending: chequear que el usuario de la sesión tenga el rol "vendedor".
+                // ...
+
+                // Agregar.
+                Producto producto = new Producto
+                {
+                    Codigo = productoDto.Codigo,
+                    Barrio = productoDto.Barrio,
+                    Descripcion = productoDto.Descripcion,
+                    Precio = productoDto.Precio,
+                    Estado = productoDto.Estado,
+                    UrlImagen = productoDto.UrlImagen,
+                };
+
+                context.Productos.Add(producto);
+
+                context.SaveChanges();
+
+                return Results.Created();
+            }).WithTags("Producto");
+
 
             // Actualizar producto
-            // -- chequear que el usuario sea vendedor
-            // ...
+            app.MapPut("/{idProducto}", (AppDbContext context, int idProducto, ProductoDto productoDto) =>
+            {
+                // Pending: chequear que el usuario de la sesión tenga el rol "vendedor".
+                // ...
+
+                // Actualizar.
+                var producto = context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
+
+                if (producto is null)
+                    return Results.BadRequest("El producto no existe");
+
+                producto.Codigo = productoDto.Codigo;
+                producto.Barrio = productoDto.Barrio;
+                producto.Descripcion = productoDto.Descripcion;
+                producto.Precio = productoDto.Precio;
+                producto.Estado = productoDto.Estado;
+                producto.UrlImagen = productoDto.UrlImagen;
+
+                context.SaveChanges();
+
+                return Results.Ok();
+            }).WithTags("Producto");
+
 
             // Eliminar producto
-            // -- chequear que el usuario sea vendedor
-            // ...
+            app.MapDelete("/eliminar/{idProducto}", (AppDbContext context, int idProducto) =>
+            {
+                // Pending: chequear que el usuario de la sesión tenga el rol "vendedor".
+                // ...
+
+                // Eliminar
+                var producto = context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
+
+                if (producto is null)
+                    return Results.BadRequest("El producto no existe");
+
+                context.Productos.Remove(producto);
+
+                context.SaveChanges();
+
+                return Results.NoContent();
+            }).WithTags("Producto");
 
         }
     }
