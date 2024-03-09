@@ -22,19 +22,28 @@ namespace academia2024.endpoints
             }).WithTags("Reserva");
 
             // Traer reserva según ID
-            // ...
+            app.MapGet("/id/{IdReserva:int}", (AppDbContext context, int IdReserva) =>
+            {
+                var reserva = context.Reservas
+                    .Include(r => r.Usuario)
+                    .Include(r => r.Producto)
+                    .Where(r => r.IdReserva == IdReserva)
+                    .Select(r => r.ConvertToReservaDto());
 
-            // Traer reservas con estado "ingresada"
-            // ...
+                return Results.Ok(reserva);
+            }).WithTags("Reserva");
 
-            // Traer reservas con estado "aprobada"
-            // ...
+            // Traer reservas segùn estado
+            app.MapGet("/estado/{Estado:alpha}", (AppDbContext context, string Estado) =>
+            {
+                var reservas = context.Reservas
+                    .Include(r => r.Usuario)
+                    .Include(r => r.Producto)
+                    .Where(r => r.Estado == Estado)
+                    .Select(r => r.ConvertToReservaDto());
 
-            // Traer reservas con estado "cancelada"
-            // ...
-
-            // Traer reservas con estado "rechazada"
-            // ...
+                return Results.Ok(reservas);
+            }).WithTags("Reserva");
 
             // Ingresar Reserva
             // -- chequear que el usuario sea vendedor

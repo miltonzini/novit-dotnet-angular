@@ -18,13 +18,22 @@ namespace academia2024.endpoints
             }).WithTags("Usuario");
 
             // Traer usuario por Id 
-            // ...
+            app.MapGet("/id/{IdUsuario:int}", (AppDbContext context, int IdUsuario) =>
+            {
+                var usuario = context.Usuarios.Where(u => u.IdUsuario == IdUsuario)
+                    .Select(u => u.ConvertToUsuarioDto());
 
-            // Traer usuarios con rol "vendedor"
-            // ... 
+                return Results.Ok(usuario);
+            }).WithTags("Usuario");
 
-            // Traer usuarios con rol "comercial"
-            // ...
+            // Traer usuarios por rol
+            app.MapGet("/codigo/{Rol:alpha}", (AppDbContext context, string Rol) =>
+            {
+                var usuarios = context.Usuarios.Where(u => u.Rol == Rol)
+                    .Select(u => u.ConvertToUsuarioDto());
+
+                return Results.Ok(usuarios);
+            }).WithTags("Usuario");
 
             // Crear Usuario (post)
             // -- usar api key 
