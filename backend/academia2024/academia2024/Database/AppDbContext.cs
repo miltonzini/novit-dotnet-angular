@@ -105,21 +105,27 @@ namespace academia2024.Database
                     IdReserva = 1,
                     Estado = "ingresada",
                     UsuarioId = 1,
-                    ProductoId = 1
+                    NombreUsuario = "Juan",
+                    ProductoId = 1,
+                    DescripcionProducto = "Casa con patio."
                 },
                 new Reserva
                 {
                     IdReserva = 2,
                     Estado = "ingresada",
                     UsuarioId = 2,
-                    ProductoId = 2
+                    NombreUsuario = "Martín",
+                    ProductoId = 2,
+                    DescripcionProducto = "Departamento 2 ambientes."
                 },
                 new Reserva
                 {
                     IdReserva = 3,
                     Estado = "aprobada",
                     UsuarioId = 3,
-                    ProductoId = 6
+                    NombreUsuario = "Esteban",
+                    ProductoId = 6,
+                    DescripcionProducto = "Casa."
                 }
             );
         }
