@@ -1,6 +1,8 @@
 ﻿using academia2024.Database;
 using Carter;
 using Microsoft.EntityFrameworkCore;
+using academia2024.endpoints.DTO;
+using academia2024.Domain;
 namespace academia2024.endpoints
 {
     public class ReservaEndpoints : ICarterModule
@@ -46,15 +48,54 @@ namespace academia2024.endpoints
             }).WithTags("Reserva");
 
             // Ingresar Reserva
-            // -- chequear que el usuario de la sesión tenga el rol "vendedor".
-            // -- if (ReservasIngresadasPorElUsuario >= 3)
-            // ------ return BadRequest y mostrar mensaje "El máximo de reservas ingresadas por vendedor es 3"
-            // -- if (r.producto.barrio = "X" && producto.precio < 100.000)
-            // ------ r.estado = "ingresada"
-            // -- r.estado = "ingresada"
-            // -- r.producto.estado= "reservado"
-            // ...
+            app.MapPost("/crear", (AppDbContext context, ReservaDto reservaDto) =>
+            {
+                // Pending: chequear que el usuario de la sesión tenga el rol "vendedor".
+                // ...
 
+                // Pending (validación cantidad de reservas hechas por el usuario):
+                // -- if (ReservasIngresadasPorElUsuario >= 3)
+                // ------ return BadRequest y mostrar mensaje "El máximo de reservas ingresadas por vendedor es 3"
+                // ...
+
+                // Pending (otras validaciones de la consigna):
+                // -- if (r.producto.barrio = "X" && producto.precio < 100.000) [crear variable bool "autoaprobar"]
+                // ------ r.estado = "aprobada"
+                // ------ r.producto.estado = "vendido"
+                // -- else
+                // ------ r.estado = "ingresada"
+                // ------ r.producto.estado = "reservado"
+                // ------ u.reservasIngresadas++
+
+                Reserva reserva = new Reserva
+                {
+                    UsuarioId = reservaDto.UsuarioId,
+                    ProductoId = reservaDto.ProductoId
+                };
+                // Obtener el nombre del usuario y la descripción del producto
+                var usuario = context.Usuarios.FirstOrDefault(u => u.IdUsuario == reservaDto.UsuarioId);
+                var producto = context.Productos.FirstOrDefault(p => p.IdProducto == reservaDto.ProductoId);
+
+                if (usuario != null && producto != null)
+                {
+                    reserva.NombreUsuario = usuario.NombreUsuario;
+                    reserva.DescripcionProducto = producto.Descripcion;
+                }
+                else
+                {
+                    return Results.BadRequest("Usuario o producto no encontrado");
+                }
+
+                context.Reservas.Add(reserva);
+                
+                // pending: sumar 1 en Usuario.ReservasIngresadas
+
+                context.SaveChanges();
+
+                return Results.Created();
+            }).WithTags("Reserva");
+
+            
             // Cancelar Reserva
             // -- chequear que el usuario de la sesión tenga el rol "vendedor".
             // -- chequear que la reserva se encuentre "ingresada"
@@ -78,7 +119,7 @@ namespace academia2024.endpoints
             // Rechazar Reserva
             // -- chequear haya sesión iniciada y que el usuario de la misma tenga rol comercial
             // -- r.estado = "rechazada"
-            // -- r.producto.estado= "disponible"
+            // -- r.producto.estado = "disponible".
             // ...
 
         }
