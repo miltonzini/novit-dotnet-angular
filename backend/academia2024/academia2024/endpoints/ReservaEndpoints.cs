@@ -46,7 +46,7 @@ namespace academia2024.endpoints
             }).WithTags("Reserva");
 
             // Ingresar Reserva
-            // -- chequear que el usuario sea vendedor
+            // -- chequear que el usuario de la sesión tenga el rol "vendedor".
             // -- if (ReservasIngresadasPorElUsuario >= 3)
             // ------ return BadRequest y mostrar mensaje "El máximo de reservas ingresadas por vendedor es 3"
             // -- if (r.producto.barrio = "X" && producto.precio < 100.000)
@@ -56,7 +56,7 @@ namespace academia2024.endpoints
             // ...
 
             // Cancelar Reserva
-            // -- chequear que el usuario sea vendedor
+            // -- chequear que el usuario de la sesión tenga el rol "vendedor".
             // -- chequear que la reserva se encuentre "ingresada"
             // -- ¿chequear que el producto tenga estado "reservado"?
             // -- r.estado = "cancelada"
@@ -67,7 +67,7 @@ namespace academia2024.endpoints
             // Aprobar Reserva
             // -- If (estado == "aprobada" || estado == "cancelada" || estado == "rechazada")
             // ------ return BadRequest y mostrar mensaje "La reserva se encuentra cerrada y no puede modificarse su estado"
-            // -- chequear si el usuario logueado y tiene rol comercial
+            // -- chequear haya sesión iniciada y que el usuario de la misma tenga rol comercial
             // -- chequear que el producto tenga estado "reservado"
             // -- r.estado = "aprobada"
             // -- r.producto.estado= "vendido"
@@ -76,7 +76,7 @@ namespace academia2024.endpoints
 
 
             // Rechazar Reserva
-            // -- chequear si el usuario logueado tiene rol comercial
+            // -- chequear haya sesión iniciada y que el usuario de la misma tenga rol comercial
             // -- r.estado = "rechazada"
             // -- r.producto.estado= "disponible"
             // ...
