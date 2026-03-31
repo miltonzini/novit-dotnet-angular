@@ -13,6 +13,6 @@ namespace academia2024
             new(u.IdUsuario, u.NombreUsuario, u.Password, u.Rol);
 
         public static ProductoDto ConvertToProductoDto(this Producto p) =>
-            new(p.IdProducto, p.Barrio, p.Descripcion, p.Precio, p.Estado, p.UrlImagen);
+            new(p.IdProducto, p.Codigo, p.Barrio, p.Descripcion, p.Precio, p.Estado, p.UrlImagen);
     }
 }

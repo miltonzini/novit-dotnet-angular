@@ -2,6 +2,7 @@
 {
     public record ProductoDto(
         int IdProducto,
+        string Codigo, 
         string Barrio,
         string? Descripcion,
         int Precio,

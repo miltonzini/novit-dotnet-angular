@@ -15,6 +15,7 @@ namespace academia2024.Database
                 new Producto
                 {
                     IdProducto = 1,
+                    Codigo = "abc123",
                     Barrio = "Palermo",
                     Descripcion = "Casa con patio.",
                     Precio = 50,
@@ -24,6 +25,7 @@ namespace academia2024.Database
                 new Producto
                 {
                     IdProducto = 2,
+                    Codigo = "oqj234",
                     Barrio = "Almagro",
                     Descripcion = "Departamento 2 ambientes.",
                     Precio = 999,
@@ -33,11 +35,32 @@ namespace academia2024.Database
                 new Producto
                 {
                     IdProducto = 3,
+                    Codigo = "hij255",
                     Barrio = "Monserrat",
                     Descripcion = "Departamento 4 ambientes.",
                     Precio = 888,
                     Estado = "disponible",
                     UrlImagen = "https://picsum.photos/202"
+                },
+                new Producto
+                {
+                    IdProducto = 4,
+                    Codigo = "oij255",
+                    Barrio = "Palermo",
+                    Descripcion = "Departamento 1 ambiente.",
+                    Precio = 888,
+                    Estado = "disponible",
+                    UrlImagen = "https://picsum.photos/210"
+                },
+                new Producto
+                {
+                    IdProducto = 5,
+                    Codigo = "laq255",
+                    Barrio = "Monserrat",
+                    Descripcion = "Monoambiente.",
+                    Precio = 888,
+                    Estado = "disponible",
+                    UrlImagen = "https://picsum.photos/210"
                 }
             );
             modelBuilder.Entity<Usuario>().HasData(
