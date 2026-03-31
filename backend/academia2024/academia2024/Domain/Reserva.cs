@@ -13,8 +13,10 @@ namespace academia2024.Domain
         [ForeignKey("UsuarioId")]
         [StringLength(100)]
         public int UsuarioId { get; set; }
-        
+        public Usuario Usuario { get; set; }
+
         [ForeignKey("IdProducto")]
         public int ProductoId { get; set; }
-     }
+        public Producto Producto { get; set; }
+    }
 }

@@ -61,6 +61,16 @@ namespace academia2024.Database
                     Precio = 888,
                     Estado = "disponible",
                     UrlImagen = "https://picsum.photos/210"
+                },
+                new Producto
+                {
+                    IdProducto = 6,
+                    Codigo = "asdasd",
+                    Barrio = "Saavedra",
+                    Descripcion = "Casa.",
+                    Precio = 1500000,
+                    Estado = "vendido",
+                    UrlImagen = "https://picsum.photos/217"
                 }
             );
             modelBuilder.Entity<Usuario>().HasData(
@@ -69,14 +79,24 @@ namespace academia2024.Database
                     IdUsuario = 1,
                     NombreUsuario = "Juan",
                     Password = "abcde",
-                    Rol = "comercial"
+                    Rol = "comercial",
+                    Ventas = 0
                 },
                 new Usuario
                 {
                     IdUsuario = 2,
                     NombreUsuario = "Martín",
                     Password = "hijkl",
-                    Rol = "comercial"
+                    Rol = "comercial",
+                    Ventas = 0
+                },
+                new Usuario
+                {
+                    IdUsuario = 3,
+                    NombreUsuario = "Esteban",
+                    Password = "abcd987",
+                    Rol = "vendedor",
+                    Ventas = 1
                 }
             );
             modelBuilder.Entity<Reserva>().HasData(
@@ -93,6 +113,13 @@ namespace academia2024.Database
                     Estado = "ingresada",
                     UsuarioId = 2,
                     ProductoId = 2
+                },
+                new Reserva
+                {
+                    IdReserva = 3,
+                    Estado = "aprobada",
+                    UsuarioId = 3,
+                    ProductoId = 6
                 }
             );
         }

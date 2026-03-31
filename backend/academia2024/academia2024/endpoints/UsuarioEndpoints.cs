@@ -6,18 +6,18 @@ namespace academia2024.endpoints
     {
         public void AddRoutes(IEndpointRouteBuilder routes)
         {
-            var app = routes.MapGroup("/api/Reserva");
+            var app = routes.MapGroup("/api/Usuario");
 
             // Traer todos los usuarios
             app.MapGet("/listado", (AppDbContext context) =>
             {
-                var reservas = context.Reservas.Select(r => r.ConvertToReservaDto());
+                var usuarios = context.Usuarios.Select(u => u.ConvertToUsuarioDto());
 
-                return Results.Ok(reservas);
+                return Results.Ok(usuarios);
 
             }).WithTags("Usuario");
 
-            // Traer usuario por Id
+            // Traer usuario por Id 
             // ...
 
             // Traer usuarios con rol "vendedor"

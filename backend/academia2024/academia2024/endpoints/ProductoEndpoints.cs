@@ -18,7 +18,7 @@ namespace academia2024.endpoints
             }).WithTags("Producto");
 
             // Traer producto según ID
-            app.MapGet("/{IdProducto:int}", (AppDbContext context, int IdProducto) =>
+            app.MapGet("/id/{IdProducto:int}", (AppDbContext context, int IdProducto) =>
             {
                 var productos = context.Productos.Where(p => p.IdProducto == IdProducto)
                     .Select(p => p.ConvertToProductoDto());
@@ -28,16 +28,24 @@ namespace academia2024.endpoints
 
 
             // Traer producto por código alfanumérico
-            // ...
+            app.MapGet("/codigo/{Codigo:regex([a-zA-Z0-9]+)}", (AppDbContext context, string Codigo) =>
+            {
+                var productos = context.Productos.Where(p => p.Codigo == Codigo)
+                    .Select(p => p.ConvertToProductoDto());
 
-            // Traer productos con estado "disponible"
-            // ...
+                return Results.Ok(productos);
+            }).WithTags("Producto");
 
-            // Traer productos con estado "reservado"
-            // ...
 
-            // Traer productos con estado "vendido"
-            // ...
+            // Traer productos por estado
+            app.MapGet("/estado/{Estado:alpha}", (AppDbContext context, string Estado) =>
+            {
+                var productos = context.Productos.Where(p => p.Estado == Estado)
+                    .Select(p => p.ConvertToProductoDto());
+
+                return Results.Ok(productos);
+            }).WithTags("Producto");
+
 
             // Crear nuevo producto
             // -- chequear que el usuario sea vendedor
